@@ -1,15 +1,15 @@
 class CalendarController < ApplicationController
-  def leapYear(day)
+  def leapYear(firstday)
     lastdays = [31,28,31,30,31,30,31,31,30,31,30,31]
     #閏年を計算
-    if day.year%400 == 0
+    if firstday.year%400 == 0
       lastdays[1] = 29
-    elsif day.year%100 == 0
+    elsif firstday.year%100 == 0
       lastdays[1] = 28
-    elsif day.year%4 == 0
+    elsif firstday.year%4 == 0
       lastdays[1] = 29
     end
-    @lastday = lastdays[day.mon-1]
+    @lastday = lastdays[firstday.mon-1]
   end
   def cale(year, month) #１日の曜日を取得、閏年計算を行う
     y = year.to_i

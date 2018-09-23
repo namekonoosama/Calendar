@@ -1,6 +1,8 @@
 <!-- date:日付 -->
-<% date = 1 - @firstday.wday %>
-<% count = 0 %>
+<% 
+date = 1 - @firstday.wday
+count = 0 
+%>
 <div class="year">
   <%= link_to("<<","/calendar/#{@firstday.year}/#{@firstday.month-1}/#{@day}/back") %>
   <h2 class="month"><%=@firstday.year%><span class="small">年 </span><%=@firstday.month%><span class="small">月</span></h2>
@@ -11,7 +13,7 @@
      <!-- 曜日の行を表示 -->
      <% @weekdays.each do |weekday| %>
        <th>
-        <%= weekday %>
+         <%= weekday %>
        </th>
      <% end %>
    </tr>
@@ -20,15 +22,19 @@
      <% while date<=0 do %>
        <td>
        </td>
-       <% date += 1 %>
-       <% count += 1 %>
-     <% end %>
-     <% while count<7 do %>
+       <% 
+        date += 1 
+        count += 1
+       %>
+      <% end %> 
+      <% while count<7 do %>
        <td>
          <%= link_to("#{date}","/calendar/#{@firstday.year}/#{@firstday.month}/#{date}/go", :class=>"link") %>
        </td>
-       <% date += 1 %>
-       <% count += 1 %>
+       <% 
+        date += 1
+        count += 1 
+       %>
      <% end %>
      <!-- countを0に戻す -->
      <% count = 0 %>
@@ -38,10 +44,12 @@
      <% while count<7 %>
        <td>
          <% if date <= @lastday %>
-         <%= link_to("#{date}","/calendar/#{@firstday.year}/#{@firstday.month}/#{date}/go", :class=>"link") %>
+          <%= link_to("#{date}","/calendar/#{@firstday.year}/#{@firstday.month}/#{date}/go", :class=>"link") %>
          <% end %>
-         <% date += 1 %>
-         <% count += 1 %>
+         <%
+          date += 1
+          count += 1 
+         %>
        </td>
      <% end %>
      <!-- countを0に戻す -->
