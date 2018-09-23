@@ -1,0 +1,15 @@
+current directory: /Users/namekonoosama/Calendar/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+/Users/namekonoosama/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20180918-17881-qffs7v.rb extconf.rb
+creating Makefile
+
+current directory: /Users/namekonoosama/Calendar/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /Users/namekonoosama/Calendar/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+current directory: /Users/namekonoosama/Calendar/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20180918-17881-1u1603a/bindex
