@@ -1,4 +1,4 @@
-<!-- date:日付 -->
+<!-- date:日付 -->
 <% date = 1 - @firstday.wday %>
 <% count = 0 %>
 <div class="year">
@@ -17,13 +17,13 @@
    </tr>
    <tr>
      <!-- １日になるまでの空白を指定 -->
-     <% while date<=0 do %>
+     <% while date<=0 do %>
        <td>
        </td>
        <% date += 1 %>
        <% count += 1 %>
      <% end %>
-     <% while count<7 do %>
+     <% while count<7 do %>
        <td>
          <%= link_to("#{date}","/calendar/#{@firstday.year}/#{@firstday.month}/#{date}/go", :class=>"link") %>
        </td>
