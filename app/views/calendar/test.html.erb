@@ -1,5 +1,5 @@
 <!-- date:日付 -->
-<% 
+<%
 date = 1 - @firstday.wday
 count = 0 
 %>
@@ -17,45 +17,23 @@ count = 0
        </th>
      <% end %>
    </tr>
+   <% while date <= @lastday do%>
    <tr>
-     <!-- １日になるまでの空白を指定 -->
-     <% while date<=0 do %>
-       <td>
-       </td>
-       <% 
-        date += 1 
-        count += 1
-       %>
-      <% end %> 
-      <% while count<7 do %>
-       <td>
-         <%= link_to("#{date}","/calendar/#{@firstday.year}/#{@firstday.month}/#{date}/go", :class=>"link") %>
-       </td>
-       <% 
-        date += 1
-        count += 1 
-       %>
-     <% end %>
-     <!-- countを0に戻す -->
-     <% count = 0 %>
-   </tr>
-   <% while date <= @lastday do %>
-   <tr>
-     <% while count<7 %>
-       <td>
-         <% if date <= @lastday %>
+      <% while count<7 do%>
+      <td>
+        <% if date > 0 && date <= @lastday %>
           <%= link_to("#{date}","/calendar/#{@firstday.year}/#{@firstday.month}/#{date}/go", :class=>"link") %>
-         <% end %>
-         <%
+        <% end %>
+      </td>
+        <%
           date += 1
           count += 1 
-         %>
-       </td>
-     <% end %>
+        %>
+      <% end %>
      <!-- countを0に戻す -->
      <% count = 0 %>
    </tr>
-  <% end %>
+   <% end %>
 </table>
  <div class="sidebar">
    <span class="sidebar_title">ボタン</span>
