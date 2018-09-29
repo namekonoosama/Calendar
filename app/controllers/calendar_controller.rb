@@ -11,6 +11,7 @@ class CalendarController < ApplicationController
     end
     @lastday = lastdays[firstday.mon-1]
   end
+
   def cale(year, month) #１日の曜日を取得、閏年計算を行う
     y = year.to_i
     m = month.to_i
@@ -19,28 +20,43 @@ class CalendarController < ApplicationController
     @firstday = Date.new(y, m, 1)
     leapYear(@firstday)
   end
+
   def test
     require "date"
     @today = Date.today
-    @day = @today.mday
+    @day = @today.mday.to_i
     cale(@today.year, @today.month)
   end
+
   def back
     year = params[:year].to_i
     month = params[:month].to_i
-    @day = params[:day]
-    if month==0
+    @day = params[:day].to_i
+    if month-1==0
+      month=12
+      year -= 1
+    end
+    cale(year,month-1)
+    if @day==0
+      @day=@lastday
+      month -= 1
+    elsif month==0
       month=12
       year -= 1
     end
     cale(year,month)
     render template: "/calendar/test"
   end
+
   def go
     year = params[:year].to_i
     month = params[:month].to_i
-    @day = params[:day]
-    if month==13
+    @day = params[:day].to_i
+    cale(year,month)
+    if @day>@lastday
+      @day = 1
+      month += 1
+    elsif month==13
       month=1
       year += 1
     end

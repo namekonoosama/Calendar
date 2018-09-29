@@ -3,7 +3,7 @@
 date = 1 - @firstday.wday
 count = 0 
 %>
-<div class="year">
+<div class="date">
   <%= link_to("<<","/calendar/#{@firstday.year}/#{@firstday.month-1}/#{@day}/back") %>
   <h2 class="month"><%=@firstday.year%><span class="small">年 </span><%=@firstday.month%><span class="small">月</span></h2>
   <%= link_to(">>","/calendar/#{@firstday.year}/#{@firstday.month+1}/#{@day}/go") %>
@@ -38,6 +38,16 @@ count = 0
  <div class="sidebar">
    <span class="sidebar_title">ボタン</span>
  </div>
-<div>
- <h2><%=@day%>日の予定</h2>
+<div class="date">
+  <%= link_to("<<","/calendar/#{@firstday.year}/#{@firstday.month}/#{@day-1}/back") %>
+  <h2><%=@day%><span class="small">日</span></h2>
+  <%= link_to(">>","/calendar/#{@firstday.year}/#{@firstday.month}/#{@day+1}/go") %>
+</div>
+<div class="schedule">
+  <div class="background"></div>
+  <%for i in 0..23 do%>
+    <span class="time"><%=i%></span>
+  <%end%>
+  <div class="item"></div>
+  <div class="item2"></div>
 </div>
